@@ -1,0 +1,24 @@
+# cmake -B Build -A "x64"
+# cmake --build Build --config Release
+
+cmake_minimum_required(VERSION 3.10)
+
+project(Injector)
+
+# Set C++ standard
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+# Include directories
+include_directories(Include)
+
+# Define executable
+add_executable(Injector Injector.cpp)
+
+#We don't want a Console Window to get rid of this will trigger Winmain and we want to continue to use main
+set_target_properties(Injector PROPERTIES LINK_FLAGS "/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup")
+
+# Add the Lib Folder for Libraries to be linked
+target_link_directories(Injector PUBLIC lib)
+target_link_libraries(Injector PRIVATE  EasyHook64.lib)
+
