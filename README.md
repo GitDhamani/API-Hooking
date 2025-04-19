@@ -1,5 +1,6 @@
 # API-Hooking
 How to use the EasyHook Library to perform API Hooking
+
 First build the target application using CL from Visual Studio's Dev Prompt. This will ensure it imports the WriteFile API from Kernel32.dll.
 Build everything else using CMake using the MSVC Generator.
 
